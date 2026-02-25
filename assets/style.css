@@ -1,0 +1,673 @@
+/* --- 1. Palet Warna, Font & Global Reset --- */
+:root {
+    --color-primary: #1e7a4b; /* Hijau Tua/Forest Green */
+    --color-secondary: #ffac33; /* Kuning Emas/Aksen */
+    --color-dark: #333333;
+    --color-light: #f4f4f4;
+    --color-white: #ffffff;
+    --font-family: 'Poppins', sans-serif;
+}
+
+/* Global Reset & Typography */
+* {
+    box-sizing: border-box; /* Sangat penting untuk layout agar padding/border tidak menambah lebar elemen */
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-family);
+    background: var(--color-light);
+    color: var(--color-dark);
+    line-height: 1.6;
+    overflow-x: hidden; /* Mencegah scroll horizontal yang menyebabkan morat-marit */
+}
+
+h1, h2, h3 {
+    color: var(--color-dark);
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+main {
+    padding-bottom: 50px; /* Ruang agar konten tidak menempel footer/whatsapp */
+}
+
+/* --- 2. Header & Navigasi --- */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    background: var(--color-white);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 53px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.site-title {
+    font-size: 1.5em;
+    font-weight: 600;
+    color: var(--color-primary);
+}
+
+.main-nav .nav-link {
+    color: var(--color-dark);
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+    padding-bottom: 5px;
+}
+
+.main-nav .nav-link:hover, .main-nav .nav-link.active {
+    color: var(--color-primary);
+    border-bottom: 2px solid var(--color-secondary);
+}
+
+.main-nav .nav-link i {
+    margin-right: 5px;
+}
+
+
+/* --- 3. Hero Section & Tombol --- */
+.hero-section {
+    /* Pastikan path gambar ini benar: assets/img/hero.jpg */
+    background: url('assets/img/begron.jpg') center/cover no-repeat;
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: left;
+    position: relative;
+    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.4);
+}
+
+.hero-content {
+    color: var(--color-white);
+    max-width: 800px;
+    padding: 0 50px;
+}
+
+.hero-content h1 {
+    font-size: 3.5em;
+    margin-bottom: 10px;
+    color: var(--color-white);
+    line-height: 1.2;
+}
+
+.hero-content .subtitle {
+    font-size: 1.2em;
+    font-weight: 300;
+    margin-bottom: 30px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background: var(--color-secondary);
+    color: var(--color-dark);
+}
+
+.btn-primary:hover {
+    background: #ffc457;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(255, 172, 51, 0.4);
+}
+
+.btn-secondary {
+    background: var(--color-primary);
+    color: var(--color-white);
+}
+
+.btn-secondary:hover {
+    background: #145935;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(30, 122, 75, 0.4);
+}
+
+/* --- 4. Section Konten (General) --- */
+.content-section {
+    padding: 60px 50px;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.section-title {
+    margin-bottom: 40px;
+    position: relative;
+    display: inline-block;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: var(--color-secondary);
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+.about-content {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.map-container {
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    border: 4px solid var(--color-white);
+}
+
+.map-container iframe {
+    border: 0;
+    min-height: 450px;
+}
+
+
+/* --- 5. Stats Section (PENTING: Perbaikan Flexbox untuk Responsif) --- */
+.stats-section {
+    display: flex;
+    justify-content: space-around;
+    padding: 40px 50px;
+    background: var(--color-primary);
+    color: var(--color-white);
+    text-align: center;
+    flex-wrap: wrap; /* Memastikan kartu turun ke baris baru jika ruang tidak cukup */
+}
+
+.stat-card {
+    flex-basis: 30%; /* Menggunakan persentase untuk pembagian ruang yang lebih baik */
+    padding: 10px;
+    min-width: 150px; /* Agar kartu tidak terlalu kecil */
+    margin: 10px 0; /* Tambahkan margin vertikal jika turun baris */
+}
+
+.stat-card h3 {
+    font-size: 3em;
+    color: var(--color-secondary);
+    margin: 0;
+    font-weight: 700;
+}
+
+.stat-card p {
+    font-size: 1.1em;
+    margin: 0;
+    font-weight: 300;
+}
+
+.icon-stat {
+    font-size: 2.5em;
+    color: var(--color-white);
+    margin-bottom: 10px;
+}
+
+
+/* --- 6. Footer --- */
+.main-footer {
+    background: var(--color-dark);
+    color: #cccccc;
+    padding: 60px 50px 20px 50px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto 40px auto;
+    border-bottom: 1px solid #444;
+    padding-bottom: 30px;
+}
+
+.footer-column h3 {
+    color: var(--color-secondary);
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    border-left: 3px solid var(--color-secondary);
+    padding-left: 10px;
+}
+
+.contact-list, .quick-links {
+    list-style: none;
+    padding: 0;
+}
+
+.contact-list li {
+    margin-bottom: 15px;
+    font-size: 0.9em;
+    display: flex;
+    align-items: flex-start;
+}
+
+.contact-list li i {
+    margin-right: 10px;
+    color: var(--color-secondary);
+    font-size: 1.1em;
+    margin-top: 3px;
+}
+
+.quick-links li a {
+    color: #cccccc;
+    text-decoration: none;
+    display: block;
+    padding: 5px 0;
+    transition: color 0.3s ease;
+}
+
+.quick-links li a:hover {
+    color: var(--color-primary);
+    padding-left: 5px;
+}
+
+.footer-logo {
+    width: 60px;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+.social-icons {
+    margin-top: 15px;
+}
+
+.social-icons a {
+    color: var(--color-white);
+    font-size: 1.2em;
+    margin-right: 15px;
+    transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: var(--color-secondary);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+}
+
+.copyright {
+    color: #888;
+    font-size: 0.85em;
+}
+
+/* --- 7. Floating WhatsApp Button --- */
+.whatsapp-float {
+    position: fixed;
+    width: 50px; /* Default lebih kecil untuk mobile */
+    height: 50px;
+    bottom: 20px;
+    right: 20px;
+    background-color: #25d366;
+    color: var(--color-white);
+    border-radius: 50%;
+    text-align: center;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Ikon di tengah */
+    padding: 0;
+    text-decoration: none;
+    font-size: 1.1em;
+    font-weight: 600;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.whatsapp-float:hover {
+    background-color: #128c7e;
+    box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.4);
+}
+
+.whatsapp-float i {
+    font-size: 24px;
+    margin: 0;
+}
+
+.wa-text {
+    display: none; /* Sembunyikan teks secara default */
+}
+
+
+/* --- 8. Media Queries (Kunci untuk Kerapian di Mobile/Tablet) --- */
+
+/* Tablet (Max 992px) */
+@media (max-width: 992px) {
+    .main-header {
+        padding: 15px 30px;
+    }
+    .hero-content h1 {
+        font-size: 2.8em;
+    }
+    .footer-grid {
+        grid-template-columns: repeat(2, 1fr); /* Footer jadi 2 kolom */
+    }
+    .stat-card {
+        flex-basis: 45%; /* Stat jadi 2 kolom */
+    }
+    .content-section, .stats-section {
+        padding: 40px 30px;
+    }
+}
+
+/* Mobile (Max 576px) */
+@media (max-width: 576px) {
+    /* Header (Menumpuk Navigasi) */
+    .main-header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px 20px;
+    }
+    .main-nav {
+        margin-top: 10px;
+        display: flex;
+        flex-wrap: wrap; /* Agar tautan nav bisa turun baris */
+        justify-content: center;
+    }
+    .main-nav .nav-link {
+        margin: 5px 8px;
+        font-size: 0.9em;
+    }
+
+    /* Hero */
+    .hero-section {
+        height: 50vh;
+    }
+    .hero-content {
+        padding: 0 20px;
+    }
+    .hero-content h1 {
+        font-size: 2em;
+    }
+    .hero-content .subtitle {
+        font-size: 1em;
+    }
+
+    /* Stats */
+    .stats-section {
+        flex-direction: column; /* Stat jadi 1 kolom */
+        padding: 30px 20px;
+    }
+    .stat-card {
+        flex-basis: 100%;
+        margin-bottom: 20px;
+    }
+
+    /* Footer */
+    .main-footer {
+        padding: 40px 20px 20px 20px;
+    }
+    .footer-grid {
+        grid-template-columns: 1fr; /* Footer jadi 1 kolom */
+        gap: 30px;
+    }
+    
+    /* Tombol WhatsApp (Teks muncul di Mobile karena ruang terbatas) */
+    .whatsapp-float {
+        width: auto;
+        border-radius: 50px;
+        padding: 0 15px;
+        height: 45px;
+    }
+    .whatsapp-float i {
+        margin-right: 8px;
+    }
+    .wa-text {
+        display: block;
+        margin-right: 5px;
+        font-size: 0.9em;
+    }
+
+    /* --- Style Khusus untuk Halaman Produk --- */
+
+.subtitle-text {
+    font-size: 1.1em;
+    color: #666;
+    margin-bottom: 40px;
+}
+
+.product-card {
+    padding: 0; /* Hapus padding agar gambar bisa penuh */
+    overflow: hidden; /* Penting untuk gambar melengkung */
+    text-align: left;
+}
+
+.product-img {
+    width: 100%;
+    height: 200px; /* Tinggi tetap untuk konsistensi */
+    object-fit: cover; /* Memastikan gambar menutupi area tanpa terdistorsi */
+    margin-bottom: 15px;
+}
+
+.product-card h3 {
+    padding: 0 15px;
+    font-size: 1.3em;
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+.product-desc {
+    padding: 0 15px;
+    font-size: 0.9em;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.desa-tag {
+    display: block;
+    padding: 0 15px;
+    font-size: 0.85em;
+    color: var(--color-primary);
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.product-price {
+    display: block;
+    padding: 0 15px 15px 15px;
+    font-size: 1.4em;
+    font-weight: 700;
+    color: var(--color-secondary); /* Harga menggunakan warna aksen */
+}
+
+.btn-small {
+    display: block;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: 10px;
+    border-radius: 0 0 10px 10px; /* Sudut melengkung hanya di bawah */
+}
+
+/* --- Style Khusus untuk Halaman Daftar Desa --- */
+
+.desa-grid {
+    /* Menggunakan grid yang sama, tapi mungkin dengan kolom yang sedikit lebih besar */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+}
+
+.desa-card {
+    text-align: center;
+    background: var(--color-white);
+    padding: 30px 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.desa-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.desa-icon {
+    font-size: 3em;
+    color: var(--color-primary); /* Ikon dengan warna utama */
+    margin-bottom: 15px;
+    display: block;
+}
+
+.desa-card h3 {
+    font-size: 1.4em;
+    margin-bottom: 10px;
+    color: var(--color-dark);
+}
+
+.desa-desc {
+    font-size: 0.9em;
+    color: #777;
+    margin-bottom: 25px;
+}
+
+.btn-desa-link {
+    width: 100%;
+    margin-top: 15px;
+    padding: 10px 0;
+    font-weight: 500;
+}
+
+/* --- Style Khusus untuk Halaman Detail Desa --- */
+
+.desa-detail-container {
+    display: flex;
+    flex-wrap: wrap; /* Agar bisa responsif */
+    justify-content: center;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.desa-info-card {
+    background: var(--color-white);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    flex: 1 1 500px; /* Fleksibel tapi tidak terlalu kecil */
+    text-align: center;
+}
+
+.info-item {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--color-light);
+}
+
+.info-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.icon-large {
+    font-size: 3.5em;
+    color: var(--color-secondary); /* Ikon besar dengan warna aksen */
+    margin-bottom: 15px;
+}
+
+.info-item h4 {
+    font-size: 1.3em;
+    color: var(--color-primary);
+    margin-bottom: 8px;
+}
+
+.info-item p {
+    font-size: 1.0em;
+    color: var(--color-dark);
+    word-wrap: break-word; /* Mencegah link panjang meluap */
+}
+
+.info-item p a {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.info-item p a:hover {
+    text-decoration: underline;
+    color: var(--color-secondary);
+}
+
+.btn-visit-web {
+    margin-top: 30px;
+    width: 100%;
+    max-width: 300px; /* Batasi lebar tombol */
+    font-size: 1.1em;
+}
+
+.btn-back-list {
+    margin-top: 15px;
+    width: 100%;
+    max-width: 300px;
+    font-size: 1.0em;
+    background-color: #eee;
+    color: var(--color-dark);
+}
+
+.btn-back-list:hover {
+    background-color: #ddd;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Jika Anda ingin menambahkan gambar preview */
+/* .desa-image-preview {
+    flex: 1 1 400px;
+    max-width: 400px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    background: var(--color-white);
+    padding-bottom: 20px;
+}
+
+.desa-image-preview img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.desa-image-preview p {
+    font-size: 0.9em;
+    color: #666;
+    padding: 0 20px;
+} */
+
+
+/* Media Queries untuk Responsif */
+@media (max-width: 768px) {
+    .desa-info-card, .desa-image-preview {
+        flex: 1 1 100%; /* Jadi 1 kolom di layar kecil */
+        max-width: 100%;
+        padding: 30px 20px;
+    }
+    .btn-visit-web, .btn-back-list {
+        max-width: 100%;
+    }
+}
+
+
+
+}
